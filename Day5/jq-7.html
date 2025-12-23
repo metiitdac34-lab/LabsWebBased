@@ -1,0 +1,28 @@
+<h1>Heading 1</h1>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus at nesciunt. Provident doloribus nihil quae error, officia velit eligendi.</p>
+
+<h1>Heasding 2</h1>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio a suscipit mollitia laborum officiis, ipsum minus obcaecati nesciunt nisi ex.</p>
+
+<h1>Heasding 3</h1>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio a suscipit mollitia laborum officiis, ipsum minus obcaecati nesciunt nisi ex.</p>
+
+<style>
+    h1,p{
+        border:solid; padding: 20px; width: 400px;
+        margin: auto;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+    $("p").hide();
+    $("p:first").show();
+    $("h1").click(function(){
+        $("p").slideUp();
+        $(this).next().slideDown();
+    }); 
+</script>
+
+
+

@@ -1,0 +1,19 @@
+<div id="slider"></div>
+
+<style>
+  div {
+    width: 1000px;
+    border: solid;
+    height: 300px;
+    margin: auto;
+  }
+</style>
+
+<script>
+  let count = 1;
+  setInterval(() => {
+    if (count == 10){count=1;} 
+      document.getElementById(`slider`).innerHTML = `Sound meter ${count++}`;
+    
+  }, 1000);
+</script>

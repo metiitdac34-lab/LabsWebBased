@@ -1,0 +1,27 @@
+<script>
+    let brands=['nike','puma', 'adidas']
+    console.log(brands);
+    console.log(brands.length);
+    console.log(brands[0]);
+    console.log(brands[1]);
+    console.log(brands[2]);
+    console.log(brands[3]);
+    console.log(brands[4]);
+
+
+    for(let val of brands )
+{
+    console.log(val);
+    document.write(`
+        <li><input type='checkbox' /> ${val}</li>
+    `)
+    
+}
+
+for(let val in  brands){
+    console.log(val, brands[val]);
+    
+}
+    
+    
+</script>

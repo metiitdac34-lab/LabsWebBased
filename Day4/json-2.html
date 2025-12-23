@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather API Call</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <style>
+    /* Background */
+    body {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      font-family: "Poppins", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    /* Card container */
+    .weather-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      max-width: 420px;
+      width: 100%;
+      padding: 2.5rem;
+      text-align: center;
+      transition: 0.4s ease;
+    }
+
+    .weather-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Title */
+    .weather-card h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    /* Input */
+    .weather-input {
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 50px;
+      padding: 12px 20px;
+      font-size: 1.1rem;
+      text-align: center;
+      color: #333;
+      transition: 0.3s;
+    }
+
+    .weather-input:focus {
+      outline: none;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+      transform: scale(1.02);
+    }
+
+    /* Button */
+    .weather-btn {
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .weather-btn:hover {
+      background: linear-gradient(135deg, #0072ff, #00c6ff);
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Output box */
+    #output {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
+      padding: 15px;
+      margin-top: 20px;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #f8f9fa;
+      min-height: 40px;
+    }
+
+    /* Weather icon style */
+    .weather-icon {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #ffd166;
+      text-shadow: 0 0 10px rgba(255, 209, 102, 0.8);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="weather-card mx-auto">
+      <div class="weather-icon">🌤️</div>
+      <h1>Weather API Call</h1>
+      <p class="text-white-50 mb-4">Check the live weather of any city</p>
+
+      <div class="mb-3">
+        <input id="x1" type="text" class="form-control weather-input" placeholder="Enter city">
+      </div>
+
+      <div class="d-grid">
+        <button class="weather-btn">Check Weather</button>
+      </div>
+
+      <p id="output" class="mt-4"></p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script src="./weather.js"></script>
+</body>
+</html>

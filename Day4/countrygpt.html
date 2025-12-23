@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌍 Country Info Finder</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <!-- Custom Style -->
+  <style>
+    body {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+      padding-top: 60px;
+    }
+
+    .container {
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-primary {
+      background-color: #00c6ff;
+      border: none;
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #0072ff;
+      transform: scale(1.05);
+    }
+
+    #resultBox {
+      display: none;
+      background-color: rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      margin-top: 20px;
+      text-align: center;
+      color: #fff;
+    }
+
+    #countryFlag {
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.4);
+      transition: transform 0.3s ease;
+    }
+
+    #countryFlag:hover {
+      transform: scale(1.1);
+    }
+
+    .fade-in {
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      margin-top: auto;
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container text-center fade-in">
+    <h2 class="mb-4 fw-bold">🌏 Country Info Finder</h2>
+
+    <!-- Input -->
+    <div class="input-group mb-3">
+      <input type="text" id="x1" class="form-control" placeholder="Enter country name (e.g. India)">
+      <button class="btn btn-primary" id="getDataBtn">Get Data</button>
+    </div>
+
+    <!-- Result -->
+    <div id="resultBox">
+      <img id="countryFlag" src="" alt="Country Flag" class="img-fluid mb-3" style="max-width:180px;">
+      <h4 id="countryName" class="fw-bold mb-3"></h4>
+      <p id="countryResult" class="lead mb-1"></p>
+    </div>
+  </div>
+
+  <footer>✨ Made with ❤️ using Bootstrap & RESTCountries API</footer>
+
+  <!-- Axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+  <!-- Script -->
+  <script>
+    document.getElementById('getDataBtn').addEventListener('click', async function() {
+      const record = document.getElementById('x1').value.trim();
+      const resultBox = document.getElementById('resultBox');
+      const nameEl = document.getElementById('countryName');
+      const flagEl = document.getElementById('countryFlag');
+      const resultEl = document.getElementById('countryResult');
+
+      if (record === "") {
+        alert("⚠️ Please enter a country name!");
+        return;
+      }
+
+      const APIPATH = `https://restcountries.com/v3.1/name/${record}?fullText=true`;
+
+      try {
+        const response = await axios.get(APIPATH);
+        const data = response.data[0];
+
+        const countryName = data.name.common;
+        const capital = data.capital ? data.capital[0] : "N/A";
+        const region = data.region;
+        const population = data.population.toLocaleString();
+        const flagUrl = data.flags.png;
+        const currency = data.currencies ? Object.values(data.currencies)[0].name : "N/A";
+
+        flagEl.src = flagUrl;
+        nameEl.textContent = countryName;
+        resultEl.innerHTML = `
+          🌆 <b>Capital:</b> ${capital}<br>
+          🌍 <b>Region:</b> ${region}<br>
+          👥 <b>Population:</b> ${population}<br>
+          💰 <b>Currency:</b> ${currency}
+        `;
+
+        resultBox.style.display = "block";
+        resultBox.classList.add("fade-in");
+
+      } catch (error) {
+        console.error(error);
+        alert("❌ Country not found! Please check the spelling.");
+        resultBox.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+<script src="./login.js"></script>

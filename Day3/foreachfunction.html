@@ -1,0 +1,18 @@
+<script>
+
+    let brands = ['Amul' , 'CK' , 'Adidas']
+    //callback function
+    brands.forEach(function(val , i){
+        console.log(val , i );
+    })
+
+    brands.forEach((val,i)=>{
+        console.log(val , i)
+    })
+
+    let users = ['user1' , 'user2' , 'user3'];
+
+   let newusers=  users.map(val => "Dr " + val.toUpperCase() );
+    console.log(newusers);
+    
+</script>

@@ -1,0 +1,17 @@
+<script>
+// PP calculation
+
+let i =1;
+let amount = 150000;
+let roi = 7.1/100;
+let openingBalance = 0;
+while(i<=15){
+    let interest = (openingBalance + amount)*roi;
+    interest = Math.round(interest);
+    let closingBalance = interest + openingBalance + amount;
+    console.log(i,openingBalance , amount ,interest , closingBalance);
+    openingBalance = closingBalance; 
+    i++;
+
+}
+</script>

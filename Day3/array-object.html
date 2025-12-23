@@ -1,0 +1,43 @@
+<script>
+    let product=[
+
+    {
+        name:'shirt ' , price:100 
+    },
+    {
+        name:'nike shoes' , price:1000
+    },
+    {
+        name:'samsung pc' , price:200 
+    },
+    {
+        name:'baggy jeans' , price:300 
+    }
+    ]
+
+    for (let val of product){
+        console.log(val);
+        console.log(val.name);
+        
+        
+    }
+
+    for(let val of product){
+        document.write(`
+        <div>
+        <h4>${val.name}</h4>
+        <p>${val.price}</p>
+        <button>Add to cart</button>
+        </div>
+        `
+    );
+        
+    }
+</script>
+
+
+<style>
+    div{
+        border: solid; text-align: center; width: 300px; height: 400px; float: left;
+    }
+</style>

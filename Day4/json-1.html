@@ -1,0 +1,24 @@
+<script>
+  //undefined and functions are not allowed in JSON
+  // null are allowed in JSON
+  // syntax similar to javascript objects
+  //light weight than xml
+
+  let info =
+    '{"name" : "rohit" , "age" : 40, "hobbies" :["cricket" , "eating vadapav"] ,"status" : true, "data" : null}';
+  console.log(info);
+  console.log(typeof info);
+
+  let ans = JSON.parse(info);
+  console.log(ans);
+
+  let product = {
+    name: "shirt",
+    price: 3000,
+    size: ["xs", "s"],
+  };
+
+  console.log(product);
+  let res = JSON.stringify(product);
+  console.log(res);
+</script>

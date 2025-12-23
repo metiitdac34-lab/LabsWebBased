@@ -1,0 +1,129 @@
+header a {
+    font-size: 16px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+header a:hover{
+    color: black !important;
+    text-decoration: underline;
+}
+
+span{
+    color: red !important;
+}
+
+.about{
+    display:flex;
+}
+.about img{
+   width: 80%;
+   border-radius: 30px;
+}
+
+.about col-xl-4{
+    text-align: center;
+    padding-top: 10px;
+}
+
+.about h1{
+    font-size: 50px;
+    padding-top: 10px;
+    color: gray;
+}
+
+.about p{
+    font-size: 16px;
+    padding-top: 2.2px;
+}
+
+.about span{
+    font-size: 40px;
+}
+.technology{
+    text-align: center;
+    font-family: "Science Gothic", sans-serif;  
+}
+
+.technology img{
+    width: 70%;
+}
+.technology .col-xl-2{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.projects h1{
+    font-family: "Bitcount Prop Single", system-ui;
+
+}
+.row h3{
+    font-weight: bold;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.row p{
+    font-weight: 100;
+    font-size: 15px;
+}
+.tinder a{
+    font-family:monospace
+}
+.tinder a:hover{
+    background-color: black !important;
+    border: none;
+
+}
+
+/* ✅ Mobile fix: no horizontal scroll, centered layout */
+@media screen and (max-width: 690px){ 
+    html, body {
+        overflow-x: hidden; /* stop horizontal scrolling */
+        width: 100%;
+    }
+
+    .row{
+        text-align: center;
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0;
+        padding: 0;
+    }
+
+    header .col-xl-3{
+        text-align: center;
+        padding-top: 10px;
+    }
+
+    header .justify-content-end{
+        justify-content: center !important;
+    }
+
+    .about{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-top: 40px;
+        width: 100%;
+        padding: 0 10px; /* prevent overflow from padding/margin */
+        box-sizing: border-box;
+    }
+
+    .about img{ 
+        width: 90% !important;  /* narrower for small screens */
+        margin-bottom: 15px;
+        height: auto;
+    }
+
+    .about h1{
+        font-size: 26px !important;
+        word-wrap: break-word;
+    }
+
+    .about p{
+        width: 100% !important;
+        font-size: 14px !important;
+        text-align: justify;
+        margin: 0 auto;
+    }
+}

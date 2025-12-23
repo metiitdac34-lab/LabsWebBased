@@ -1,0 +1,13 @@
+
+
+<script>
+
+let promiseObject = new Promise((res,rej) =>{
+    // res({msg:'api called' , status : 200})
+    rej({msg:'api rejected' , status:401})
+});
+
+console.log(promiseObject);
+
+</script>
+

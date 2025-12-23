@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Java MCQ Exam</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f9f9f9;
+        padding: 20px;
+        margin: 0;
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    .question-box {
+        background: #fff;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    .options label {
+        display: block;
+        margin: 5px 0;
+        cursor: pointer;
+    }
+    .answer {
+        display: none;
+        margin-top: 10px;
+        color: green;
+        font-weight: bold;
+    }
+    button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        background: #007bff;
+        color: #fff;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    #submitBtn {
+        display: block;
+        margin: 30px auto;
+        font-size: 18px;
+        background: green;
+    }
+    #result {
+        text-align: center;
+        font-size: 22px;
+        font-weight: bold;
+        margin-top: 25px;
+        color: darkblue;
+    }
+</style>
+</head>
+<body>
+
+<h1>Java MCQ Exam</h1>
+
+<div id="quiz"></div>
+
+<button id="submitBtn">Submit Exam</button>
+
+<div id="result"></div>
+
+<script>
+// 20 Java MCQ Questions
+const questions = [
+    {q: "1. Which of the following is not a Java feature?", options: ["Object-oriented", "Use of pointers", "Platform independent", "Secure"], answer: [1]},
+    {q: "2. Which company developed Java?", options: ["Microsoft", "Apple", "Sun Microsystems", "Google"], answer: [2]},
+    {q: "3. What is JVM?", options: ["Java Very Machine", "Java Virtual Machine", "Joint Virtual Module", "None"], answer: [1]},
+    {q: "4. Which keyword is used to inherit a class?", options: ["this", "super", "extends", "implements"], answer: [2]},
+    {q: "5. Which method is the entry point of Java?", options: ["start()", "main()", "run()", "execute()"], answer: [1]},
+    {q: "6. What is the extension of Java bytecode?", options: [".class", ".java", ".jar", ".exe"], answer: [0]},
+    {q: "7. Which of these is not a primitive datatype?", options: ["int", "float", "String", "char"], answer: [2]},
+    {q: "8. Which operator is used for comparison?", options: ["=", "==", "<>", "==="], answer: [1]},
+    {q: "9. Which package contains Java's core classes?", options: ["java.core", "java.main", "java.base", "java.lang"], answer: [3]},
+    {q: "10. Which loop is guaranteed to run at least once?", options: ["for", "while", "do-while", "foreach"], answer: [2]},
+    {q: "11. Which keyword stops a loop?", options: ["stop", "exit", "break", "end"], answer: [2]},
+    {q: "12. Which concept allows multiple methods with same name?", options: ["Inheritance", "Polymorphism", "Abstraction", "Encapsulation"], answer: [1]},
+    {q: "13. Which keyword prevents method overriding?", options: ["static", "final", "private", "public"], answer: [1]},
+    {q: "14. Which collection stores unique elements?", options: ["List", "Set", "Queue", "Vector"], answer: [1]},
+    {q: "15. Which exception is thrown when dividing by zero?", options: ["IOException", "ArithmeticException", "NullPointerException", "ClassCastException"], answer: [1]},
+    {q: "16. Which keyword allocates memory for an object?", options: ["malloc", "new", "alloc", "create"], answer: [1]},
+    {q: "17. What does JRE stand for?", options: ["Java Runtime Environment", "Java Reaction Engine", "Java Running Extension", "None"], answer: [0]},
+    {q: "18. Which collection allows key-value pairs?", options: ["List", "Map", "Set", "Array"], answer: [1]},
+    {q: "19. Which keyword is used to define an interface?", options: ["class", "interface", "abstract", "implements"], answer: [1]},
+    {q: "20. Which method is used to start a thread?", options: ["begin()", "start()", "run()", "execute()"], answer: [1]}
+];
+
+// Build quiz HTML
+const quiz = document.getElementById("quiz");
+
+questions.forEach((q, index) => {
+    const box = document.createElement("div");
+    box.className = "question-box";
+
+    box.innerHTML = `
+        <p><b>${q.q}</b></p>
+        <div class="options">
+            ${q.options.map((opt, i) => `
+                <label>
+                    <input type="checkbox" name="q${index}" value="${i}"> ${opt}
+                </label>
+            `).join("")}
+        </div>
+        <button onclick="showAnswer(${index})">Show Answer</button>
+        <div id="ans${index}" class="answer">Correct Answer: ${q.answer.map(a=>q.options[a]).join(", ")}</div>
+    `;
+
+    quiz.appendChild(box);
+});
+
+// Show answer function
+function showAnswer(i) {
+    document.getElementById("ans" + i).style.display = "block";
+}
+
+// Submit exam and calculate score
+document.getElementById("submitBtn").addEventListener("click", () => {
+    let score = 0;
+
+    questions.forEach((q, i) => {
+        const selected = Array.from(document.querySelectorAll(`input[name="q${i}"]:checked`)).map(input => parseInt(input.value));
+        // Sort arrays to compare
+        selected.sort();
+        const correct = q.answer.slice().sort();
+        if (JSON.stringify(selected) === JSON.stringify(correct)) {
+            score++;
+        }
+    });
+
+    document.getElementById("result").innerText = `Your Score: ${score} / ${questions.length}`;
+});
+</script>
+
+</body>
+</html>
